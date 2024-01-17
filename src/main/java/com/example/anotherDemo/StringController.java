@@ -18,14 +18,15 @@ public class StringController {
     long afterUsedMem;
     Set<String> resultSet = new HashSet<>();
 
-    BiFunction<String, String, String> replaceFunc = (input, replacement) -> input.replaceAll(replacement, "_");
+//    BiFunction<String, String, String> replaceFunc = (input, replacement) -> input.replaceAll(replacement, "_");
 
     Runnable rn = () ->
     {
         resultSet = stringList.parallelStream()
-                .map(url -> Arrays.stream(wordArray).parallel()
-                        .reduce(url, (input, replacement) -> input.replaceAll(replacement, "_")))
-                .collect(Collectors.toSet());
+                    .map(url -> Arrays.stream(wordArray).parallel()
+                        .reduce(url,
+                                    (input, replacement) -> input.replaceAll(replacement, "_")))
+                    .collect(Collectors.toSet());
 
     };
 
