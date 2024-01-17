@@ -18,7 +18,7 @@ public class StringController {
     long afterUsedMem;
     Set<String> resultSet = new HashSet<>();
 
-//    BiFunction<String, String, String> replaceFunc = (input, replacement) -> input.replaceAll(replacement, "_");
+    BiFunction<String, String, String> replaceFunc = (input, replacement) -> input.replaceAll(replacement, "_");
 
     Runnable rn = () ->
     {
