@@ -23,7 +23,8 @@ public class StringController {
     Runnable rn = () ->
     {
         resultSet = stringList.parallelStream()
-                .map(url -> Arrays.stream(wordArray).parallel().reduce(url, replaceFunc::apply))
+                .map(url -> Arrays.stream(wordArray).parallel()
+                        .reduce(url, (input, replacement) -> input.replaceAll(replacement, "_")))
                 .collect(Collectors.toSet());
 
     };
